@@ -4,38 +4,60 @@ import { GrFormClose } from "react-icons/gr";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import Image from "next/image";
-import { Drawer } from "antd";
+import { Drawer, Tooltip } from "antd";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
+import Head from "next/head";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+
   return (
-    <header className="flex items-center justify-between h-[60px] z-50 sticky top-0 left-0 right-0 overflow-hidden md:px-[10vw] gap-5 bg-gray-200 py-3 px-5 ">
-      <div className="md:mr-[18vw]">
+    <header className="flex items-center justify-between h-[60px] z-50 sticky top-0 left-0 right-0 overflow-hidden md:px-[10vw] gap-5 bg-gray-200 text-black px-5 ">
+      <div className="md:mr-[100px]">
+        <Head>
+          <link
+            rel="icon"
+            href="/logo.svg"
+            type="image/x-icon"
+            sizes="any"
+          ></link>
+        </Head>
         <Logo />
       </div>
-      <div className="flex gap-2 border border-black max-w-[980px] md:mr-10 overflow-hidden bg-white py-1">
+      <div className="flex gap-2 border border-black max-w-[980px] md:mr-10 cursor-pointer overflow-hidden bg-white py-1">
         <Marquee pauseOnHover="true" autoFill="true">
           {Logos.map((logo, index) => (
             <div className="mx-4" key={index}>
-              <Image src={"/" + logo || "/"} width={25} height={25} alt="" />
+              <Tooltip title={logo.title}>
+                <Image src={"/" + logo.img || "/"} width={25} height={25} alt="" />
+              </Tooltip>
             </div>
           ))}
         </Marquee>
       </div>
-      <nav className="sm:flex gap-5 hidden">
-        {Links.map((link, index) => (
-          <Link href={link.route || "#"} key={index}>
-            {link.text}
-          </Link>
-        ))}
+      <nav className="sm:flex hidden gap-5">
+        {Links.map((link, index) => {
+          const isActive = pathname === link.route;
+          return (
+            <Link
+              href={link.route || "#"}
+              key={index}
+              className={isActive ? " border-b-4 border-[#f60] h-[60px] flex items-center " : " h-[60px] flex items-center  border-b-4 border-[#00000000] "}
+            >
+              {link.text}
+            </Link>
+          );
+        })}
       </nav>
       <Drawer
         closable={false}
@@ -46,7 +68,7 @@ export default function Navbar() {
         style={{ backgroundColor: "#000", color: "#fff" }}
       >
         <div className="flex flex-col h-full justify-end relativep-4">
-          <div className="text-white bg-slate-50 rounded-full text-3xl absolute top-[20px] right-[20px]">
+          <div className=" bg-slate-50 rounded-full text-3xl absolute top-[20px] right-[20px]">
             <GrFormClose onClick={onClose} />
           </div>
           <nav className="sm:hidden text-4xl mb-10 ml-8 flex flex-col gap-10 ">
@@ -54,6 +76,7 @@ export default function Navbar() {
               <Link
                 href={link.route || "#"}
                 key={index}
+                onClick={onClose}
                 className=" border-b-2 border-white pb-2"
               >
                 {link.text}
@@ -63,14 +86,18 @@ export default function Navbar() {
           <div className="absolute bg-[#ff660030] bottom-[-5%] right-[-50%] w-[400px] h-[500px]  blur-3xl rounded-full "></div>
         </div>
       </Drawer>
-      <div className="sm:hidden text-3xl cursor-pointer select-none">
-        <BiMenuAltRight onClick={showDrawer} />
+      <div onClick={showDrawer} className="sm:hidden text-3xl cursor-pointer ">
+        <BiMenuAltRight />
       </div>
     </header>
   );
 }
 
 const Links = [
+  {
+    text: "Home",
+    route: "/",
+  },
   {
     text: "About",
     route: "/about",
@@ -89,17 +116,54 @@ const Links = [
   },
 ];
 
+
 const Logos = [
-  "react.svg",
-  "nextjs.svg",
-  "javascript.svg",
-  "tailwindcss.svg",
-  "mongodb.svg",
-  "html.svg",
-  "css.svg",
-  "git.svg",
-  "github.svg",
-  "figma.svg",
-  "photoshop.svg",
-  "firebase.svg",
-];
+  {
+    title: "React",
+    img: "react.svg"
+  },
+  {
+    title: "Next.js",
+    img: "nextjs.svg"
+  },
+  {
+    title: "JavaScript",
+    img: "javascript.svg"
+  },
+  {
+    title: "HTML",
+    img: "html.svg"
+  },
+  {
+    title: "CSS",
+    img: "css.svg"
+  },
+  {
+    title: "Tailwind CSS",
+    img: "tailwindcss.svg"
+  },
+  {
+    title: "MongoDB",
+    img: "mongodb.svg"
+  },
+  {
+    title: "Git",
+    img: "git.svg"
+  },
+  {
+    title: "GitHub",
+    img: "github.svg"
+  },
+  {
+    title: "Figma",
+    img: "figma.svg"
+  },
+  {
+    title: "Photoshop",
+    img: "photoshop.svg"
+  },
+  {
+    title: "Firebase",
+    img: "firebase.svg"
+  },
+]

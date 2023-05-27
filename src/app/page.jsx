@@ -1,40 +1,15 @@
 import Image from "next/image";
-import { ImTwitter } from "react-icons/im";
-import { MdEmail } from "react-icons/md";
-import { FaLinkedinIn } from "react-icons/fa";
-import { AiFillGithub } from "react-icons/ai";
-import { Button } from "antd";
-import { BiDownload } from "react-icons/bi";
+import MessageModal from "@/components/MessageModal";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="flex flex-col text-white bg-black ">
-      <div className="flex flex-col relative pt-[150px] min-h-[80vh] p-4 ">
-        <div className="flex flex-col gap-10">
-          <h1 className="font-bold text-5xl">Dilkhush Raj</h1>
-          <h4 className="text-xl ">
-            I'm Full Stack Web Developer <br /> working as{" "}
-            <span className="text-[#f60]">Freelancer</span>
-          </h4>
-          <div className="flex items-center gap-4 bg-[#f60] w-max px-4 py-2 rounded-sm ">
-            Download Resume
-            <BiDownload />
-          </div>
-        </div>
-        <div className="absolute bottom-10">
-          <h3 className="text-2xl">Connect With Me</h3>
-          <div className="flex items-center gap-4 py-3 text-4xl ">
-            <FaLinkedinIn />
-            <AiFillGithub />
-            <ImTwitter />
-            <MdEmail />
-          </div>
-        </div>
-      </div>
-      <div className="relative overflow-hidden p-10">
+    <main className="flex flex-col text-white">
+      <Hero />
+      <div className="relative overflow-hidden flex  flex-col-reverse sm:flex-row items-center justify-around gap-10 p-4 sm:p-20">
         <div className="absolute w-[200px] h-[200px] blur-3xl bg-[#7f00ad8d] top-[-100px] left-[-100px] "></div>
         <div className="absolute w-[200px] h-[200px] blur-3xl bg-[#ff66005b] bottom-[-100px] right-[10px] "></div>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 ">
           <p>
             I am not a champion in Mathematics, but I am quite good at solving
             problems with my programmming knowledge.
@@ -48,6 +23,21 @@ export default function Home() {
             company that focuses on using carbon-free energy.
           </p>
         </div>
+        <Image
+          src={"/dilkhush-raj.png"}
+          width={400}
+          height={400}
+          className="h-[200px] min-w-fit rounded-sm w-[200px] object-cover overflow-hidden "
+        />
+      </div>
+
+      <div className="bg-[#f60] p-10 ">
+        <h3 className="flex items-center justify-evenly text-2xl">
+          Do you have project in your head?{" "}
+          <div>
+            <MessageModal />
+          </div>
+        </h3>
       </div>
     </main>
   );
