@@ -20,6 +20,7 @@ export default function Navbar() {
   const onClose = () => {
     setOpen(false);
   };
+  const isActive = pathname === "/";
 
   return (
     <header className="flex items-center justify-between h-[60px] z-50 sticky top-0 left-0 right-0 overflow-hidden md:px-[10vw] gap-5 bg-gray-200 text-black px-5 ">
@@ -39,20 +40,40 @@ export default function Navbar() {
           {Logos.map((logo, index) => (
             <div className="mx-4" key={index}>
               <Tooltip title={logo.title}>
-                <Image src={"/" + logo.img || "/"} width={25} height={25} alt="" />
+                <Image
+                  src={"/" + logo.img || "/"}
+                  width={25}
+                  height={25}
+                  alt=""
+                />
               </Tooltip>
             </div>
           ))}
         </Marquee>
       </div>
       <nav className="sm:flex hidden gap-5">
+        {
+          <Link
+          href={"/"}
+          className={
+            isActive
+              ? " border-b-4 border-[#f60] h-[60px] flex items-center "
+              : " h-[60px] flex items-center  border-b-4 border-[#00000000] "
+          }
+        >
+          Home
+        </Link>}
         {Links.map((link, index) => {
-          const isActive = pathname === link.route;
+          const isActive = pathname.startsWith(link.route);
           return (
             <Link
               href={link.route || "#"}
               key={index}
-              className={isActive ? " border-b-4 border-[#f60] h-[60px] flex items-center " : " h-[60px] flex items-center  border-b-4 border-[#00000000] "}
+              className={
+                isActive
+                  ? " border-b-4 border-[#f60] h-[60px] flex items-center "
+                  : " h-[60px] flex items-center  border-b-4 border-[#00000000] "
+              }
             >
               {link.text}
             </Link>
@@ -95,10 +116,6 @@ export default function Navbar() {
 
 const Links = [
   {
-    text: "Home",
-    route: "/",
-  },
-  {
     text: "About",
     route: "/about",
   },
@@ -116,54 +133,53 @@ const Links = [
   },
 ];
 
-
 const Logos = [
   {
     title: "React",
-    img: "react.svg"
+    img: "react.svg",
   },
   {
     title: "Next.js",
-    img: "nextjs.svg"
+    img: "nextjs.svg",
   },
   {
     title: "JavaScript",
-    img: "javascript.svg"
+    img: "javascript.svg",
   },
   {
     title: "HTML",
-    img: "html.svg"
+    img: "html.svg",
   },
   {
     title: "CSS",
-    img: "css.svg"
+    img: "css.svg",
   },
   {
     title: "Tailwind CSS",
-    img: "tailwindcss.svg"
+    img: "tailwindcss.svg",
   },
   {
     title: "MongoDB",
-    img: "mongodb.svg"
+    img: "mongodb.svg",
   },
   {
     title: "Git",
-    img: "git.svg"
+    img: "git.svg",
   },
   {
     title: "GitHub",
-    img: "github.svg"
+    img: "github.svg",
   },
   {
     title: "Figma",
-    img: "figma.svg"
+    img: "figma.svg",
   },
   {
     title: "Photoshop",
-    img: "photoshop.svg"
+    img: "photoshop.svg",
   },
   {
     title: "Firebase",
-    img: "firebase.svg"
+    img: "firebase.svg",
   },
-]
+];

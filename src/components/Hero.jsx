@@ -9,7 +9,7 @@ import Resume from "./Resume";
 export default function Hero() {  
   return (
     <div className="grid  sm:grid-cols-2 grid-cols-1 ">
-      <div className="flex flex-col relative pt-[150px] custom-h justify-between p-4  sm:px-20 ">
+      <div className="flex flex-col relative pt-[150px] custom-h justify-between p-4   sm:px-20 ">
         <div className="flex flex-col gap-10">
           <h1 className="font-bold text-5xl">Dilkhush Raj</h1>
           <h4 className="text-xl ">
@@ -18,7 +18,7 @@ export default function Hero() {
           </h4>
           <Resume />
         </div>
-        <div className=" my-[50px]">
+        <div className=" sm:my-[50px] absolute bottom-4 left-4 sm:static">
           <h3 className="text-xl">Connect With Me</h3>
           <div className="flex items-center gap-4 py-3 text-2xl ">
             <Link href={"https://linkedin.com/in/dilkhush-raj"} target="_blank">

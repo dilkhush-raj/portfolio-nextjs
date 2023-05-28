@@ -10,6 +10,7 @@
 
 *{
   user-select: none;
+  -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -34,7 +35,7 @@
 
 
 body {
-  background-color: black;
+  background-color: #1a1a1a;
   color: white;
 }
 
@@ -47,36 +48,9 @@ body {
   min-height: calc(100vh - 60px);
 }
 
-.clearfix:after {
-  content: '';
-  display: table;
-  clear: both;
+.gradient-text1{
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-#main{
- background-color: BurlyWood;
- float: right;
- height:200px;
-  width: 75%;
-}
-#sidebar{
- background-color: IndianRed;
- width:25%;
- float: left;
- height:200px;
- overflow-y: hidden;
-}
-
-#dragbar{
- background-color:black;
- height:100%;
- float: right;
- width: 10px;
- cursor: col-resize;
-}
-#ghostbar{
-  width:3px;
-  background-color:#000;
-  opacity:0.5;
-  position:absolute;
-  cursor: col-resize;
-  z-index:999}
