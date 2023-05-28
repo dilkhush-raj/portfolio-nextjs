@@ -4,7 +4,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { QRCode, Modal, Popover, Tag } from "antd";
 import { useState } from "react";
-import absoluteUrl from "next-absolute-url";
+// import absoluteUrl from "next-absolute-url";
 import Link from "next/link";
 
 export default function BlogCard({ data }) {
@@ -15,8 +15,8 @@ export default function BlogCard({ data }) {
     setQr(!qr);
   };
 
-  const origin = absoluteUrl();
-  const websiteUrl = origin.origin;
+  // const origin = absoluteUrl();
+  const websiteUrl = "https://portfolio-next-dilkhush-raj.vercel.app";
   const slug = data?.slug || null;
   
   const shareData = {

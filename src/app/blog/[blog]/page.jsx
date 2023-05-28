@@ -1,13 +1,13 @@
 "use client";
 import BlogData from "@/data/blog.json";
-import absoluteUrl from "next-absolute-url";
+// import absoluteUrl from "next-absolute-url";
 
 export default function SingleBlog({ params }) {
 
   const blogSlug = params.blog;
   const data = BlogData?.find((item) => item.slug === blogSlug);
-  const origin = absoluteUrl();
-  const websiteUrl = origin.origin;
+//   const origin = absoluteUrl();
+  const websiteUrl = "https://portfolio-next-dilkhush-raj.vercel.app";
 
   const shareData = {
     title: data.title,
