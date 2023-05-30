@@ -54,3 +54,9 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.sun-editor{
+  margin: auto;
+  width: 100vw;
+  height: 80vh;
+}
