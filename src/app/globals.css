@@ -60,3 +60,19 @@ body {
   width: 100vw;
   height: 80vh;
 }
+
+
+.hero:hover{
+  color: #333;
+  text-shadow: 4px 3px 2px rgb(255, 255, 255);
+  background: linear-gradient(90deg, hsla(176, 61%, 87%, 1) 0%, hsla(150, 54%, 86%, 1) 50%, hsla(301, 68%, 84%, 1) 100%);;
+}
+
+.h-c{
+  height: calc(100vh - 60px);
+}
+
+canvas{
+  height: 100% !important;
+  width: 100% !important;
+}

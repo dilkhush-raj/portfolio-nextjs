@@ -1,46 +1,37 @@
-import { ImTwitter } from "react-icons/im";
-import { MdEmail } from "react-icons/md";
-import { FaLinkedinIn } from "react-icons/fa";
-import { AiFillGithub } from "react-icons/ai";
-import Link from "next/link";
-import Image from "next/image";
-import Resume from "./Resume";
+// import { motion } from "framer-motion";
+// import { styles } from "../../styles";
+// import  EarthCanvas from "../canvas/Earth";
+// import Button from "../button";
+"use client";
+import { Tilt } from "react-tilt";
+import SpaceCanvas from "@/canvas/Space";
 
-export default function Hero() {  
+const Hero = () => {
   return (
-    <div className="grid  sm:grid-cols-2 grid-cols-1 ">
-      <div className="flex flex-col relative pt-[150px] custom-h justify-between p-4   sm:px-20 ">
-        <div className="flex flex-col gap-10">
-          <h1 className="font-bold text-5xl">Dilkhush Raj</h1>
-          <h4 className="text-xl ">
-            I'm Full Stack Web Developer <br /> working as{" "}
-            <span className="text-[#f60]">Freelancer</span>
-          </h4>
-          <Resume />
-        </div>
-        <div className=" sm:my-[50px] absolute bottom-4 left-4 sm:static">
-          <h3 className="text-xl">Connect With Me</h3>
-          <div className="flex items-center gap-4 py-3 text-2xl ">
-            <Link href={"https://linkedin.com/in/dilkhush-raj"} target="_blank">
-              <FaLinkedinIn className=" hover:text-[#0077b5]  " />
-            </Link>
-            <Link href={"https://github.com/dilkhush-raj"}>
-              <AiFillGithub />
-            </Link>
-            {/* <ImTwitter className="hover:text-[#1DA1F2] " /> */}
-            <Link href={"mailto:dilkhush_raj@outlook.com"}>
-              <MdEmail className="hover:text-[#ff872c]" />
-            </Link>
+    <section className="relative z-0 h-c ">
+      <SpaceCanvas />
+
+      <div className=" p-4 rounded-lg absolute top-[100px] left-[50%] translate-x-[-50%] z-10 mx-auto flex flex-col gap-5">
+        <Tilt>
+          <div className="flex hero cursor-pointer p-4 rounded-md">
+            <div className="">
+              <h1 className="font-black lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2">
+                Hi, I'm{" "}
+                <span className=" font-c my-name text-[#915EFF]">Dilkhush</span>
+              </h1>
+              <p
+                className={` font-black lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] font-c mt-2 `}
+              >
+                I am self taught web developer{" "}
+                <br className="sm:block hidden" />
+                with expertise in React and Next.js
+              </p>
+            </div>
           </div>
-        </div>
+        </Tilt>
       </div>
-      <Image
-        src="/1.png"
-        width={400}
-        height={400}
-        alt=""
-        className="w-[90%] m-auto pr-4 hidden sm:block"
-      />
-    </div>
+    </section>
   );
-}
+};
+
+export default Hero;
