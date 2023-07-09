@@ -1,10 +1,27 @@
 "use client";
 import { Drawer } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tag } from "antd";
 import { GrFormClose } from "react-icons/gr";
 
 export default function ProjectDetails({ data }) {
+  const [isScreenWide, setIsScreenWide] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenWide(window.innerWidth > 750);
+    };
+
+    handleResize(); // Initial check
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -24,6 +41,7 @@ export default function ProjectDetails({ data }) {
         maskClosable={true}
         onClose={onClose}
         className="bg-[#222]"
+        size={isScreenWide ? "large" : "default"}
         bodyStyle={{
           backgroundColor: "#111",
           backgroundImage: "linear-gradient(to right, #111, #1c1c1c, #111)",

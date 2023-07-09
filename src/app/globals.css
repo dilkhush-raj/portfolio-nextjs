@@ -29,17 +29,21 @@
   width: 4px;
 }
 *::-webkit-scrollbar-track {
-  background: rgb(235, 202, 245);
+  background: #222;
 }
 *::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #f60;
-  background-image: linear-gradient(315deg, #fe1f1f 0%, #f60 74%);
+  background-color: #fff;
+  background-image: linear-gradient(#555, #aaa, #555);
 }
 /* 
 *::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(#626262, #141414);
 } */
+
+html{
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #000;
@@ -98,4 +102,23 @@ canvas {
   background-color: #4d4855;
 background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
 
+}
+
+.scroll-dot{
+  animation: scrollAnimation 1.5s infinite;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
