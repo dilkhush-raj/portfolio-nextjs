@@ -6,7 +6,7 @@ const Space = () => {
   const space = useGLTF("./space_boi/scene.gltf");
 
   return (
-    <primitive object={space.scene} scale={.5} position-y={-2}  rotation-y={4.5} />
+    <primitive object={space.scene} scale={.5} position-y={-2}  rotation-y={5} />
   );
 };
 
